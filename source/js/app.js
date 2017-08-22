@@ -93,6 +93,15 @@ $("form").submit(function (event) {
         });
         grecaptcha.reset();
 
+        /* Reset all form fields after successful submission */
+
+        $("#name").val("");
+        $("#email").val("");
+        $("#title").val("");
+        $("#tags").val("");
+        $("#content").val("");
+        $("#link").attr("checked", false);
+
       }
 
       $(".loader").fadeOut();
