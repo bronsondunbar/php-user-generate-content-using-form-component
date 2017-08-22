@@ -2,7 +2,7 @@
 
 require "includes/PHPMailerAutoload.php";
 
-/* Global */
+/* Declare variables */
 
 $captcha = "";
 $captchaError = "";
@@ -18,13 +18,15 @@ $userPage = "";
 $pageMessage = "";
 $emailLink = "";
 
-/* Get values from form */
+/* Check if the Google reCAPTCHA has been set */
 
 if(isset($_POST["g-recaptcha-response"])){
 
 	$captcha=$_POST["g-recaptcha-response"];
 
 }
+
+/* Check and make sure all form fields have data and populate response object with appropriate messages */
 
 if (empty($_POST["name"])) {
 
@@ -77,10 +79,14 @@ if (empty($_POST["content"])) {
 
 }
 
+/* Set Google reCAPTCHA settings here */
+
 $secret = "PRIVATE_KEY";
 $ip = $_SERVER['REMOTE_ADDR'];
 $response=file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=".$secret."&response=".$captcha."&remoteip=".$ip);
 $responseKeys = json_decode($response,true);
+
+/* Only if Google reCAPTCHA returns success move on to creating the folder and file */
 
 if(intval($responseKeys["success"]) !== 1) {
 
@@ -101,6 +107,8 @@ if(intval($responseKeys["success"]) !== 1) {
 	$currentURL = "http://" . $_SERVER['HTTP_HOST'] . $rootFolder;
 	$folderPath = $folderName;
 
+	/* Make sure there isn't an existing folder, if there is keep looping and append incremental number at the end of the folder name */
+
 	if (file_exists($folderPath)) {
 
 	  $newFolder = $folderPath;
@@ -120,6 +128,8 @@ if(intval($responseKeys["success"]) !== 1) {
 
 	  $createFile = $uploadFolder . $pageTitleFormatted . ".php";
 	  $fh = fopen($createFile, "w") or die($responseData["pageError"] = "<i class='fa fa-times' aria-hidden='true'></i> Page could not be created.");
+
+	  /* We store a HTML template in a PHP variable and populate it with data from the form */
 
 	  $userContent =  "<!DOCTYPE html> \n" .
 	                  "<html lang='en'> \n" .
@@ -158,6 +168,9 @@ if(intval($responseKeys["success"]) !== 1) {
 	                  "</div> \n" .
 	                  "</body> \n" .
 	                  "</html> \n";
+
+
+	  /* Once the folder has been created and we have loaded a HTML template as a variable, we can create the file and save it in the folder */
 
 	  fwrite($fh, $userContent);
 
