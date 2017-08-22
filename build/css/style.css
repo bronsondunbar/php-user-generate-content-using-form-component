@@ -9559,6 +9559,23 @@ body {
   .info .btn {
     width: 10%; }
 
+/* Loader */
+.loader {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  background: rgba(6, 169, 225, 0.5);
+  z-index: 9999; }
+  .loader .fa {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: #ffffff; }
+
 body {
   background: #0d3758;
   background: linear-gradient(135deg, #F1F1F2 0%, #ffffff 100%);

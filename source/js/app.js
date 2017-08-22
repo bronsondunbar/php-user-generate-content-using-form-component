@@ -10,6 +10,15 @@ $("form").submit(function (event) {
     data: $("#form").serialize(),
     dataType: "json",
 
+    beforeSend:function (){
+      $("body").animate({
+          scrollTop: 0 
+      }, "fast");
+
+      $(".loader").fadeIn();
+      $("body").css("overflow", "hidden");
+    },
+
     complete: function (data) {
 
       if (data.responseJSON.nameError != undefined) {
@@ -85,6 +94,9 @@ $("form").submit(function (event) {
         grecaptcha.reset();
 
       }
+
+      $(".loader").fadeOut();
+      $("body").css("overflow", "scroll");
 
     }
   });
