@@ -28,6 +28,14 @@ $("form").submit(function (event) {
       $("body").css("overflow", "hidden");
     },
 
+    /* If there are any syntax issues in our PHP script we will log them in the console */
+
+    error: function (jqXHR, textStatus, errorThrown) {
+      console.log(jqXHR);
+      console.log(textStatus);
+      console.log(errorThrown);
+    },
+
     /* Once our PHP script is done, it will send us a JSON encoded response, this is where we will check what response we received and display the apporiate message */
 
     complete: function (data) {
