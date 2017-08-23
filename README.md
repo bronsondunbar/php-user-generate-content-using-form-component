@@ -2,7 +2,7 @@
 
 This example creates a folder and page from where it is being hosted using the details from the form.
 
-It also includes Google reCAPTCHA to ensure there are no spam content created.
+It also includes Google reCAPTCHA to ensure there is no spam content created.
 
 It also includes an option mail the link of the page created.
 
