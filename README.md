@@ -6,7 +6,7 @@ It also includes Google reCAPTCHA to ensure there is no spam content created.
 
 It also includes an option mail the link of the page created.
 
-Preview http://bronsondunbar.com/components/php-user-generated-content-using-a-form-component/
+Preview: http://bit.ly/2vCsdAR
 
 ## Steps
 
