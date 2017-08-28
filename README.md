@@ -6,6 +6,8 @@ It also includes Google reCAPTCHA to ensure there is no spam content created.
 
 It also includes an option mail the link of the page created.
 
+Preview http://bronsondunbar.com/components/php-user-generated-content-using-a-form-component/
+
 ## Steps
 
 In order for the example below to work you will need to use your own Google reCAPTCHA site &amp; private keys as well as your MailChimp API key and list ID
