@@ -106,7 +106,7 @@ if(intval($responseKeys["success"]) !== 1) {
 
 	  while (is_dir($newPath)) {
 
-	    $newPath = $newFolder . "_0" . ++$int;
+	    $newPath = $newFolder . "-0" . ++$int;
 
 	  }
 
@@ -118,45 +118,18 @@ if(intval($responseKeys["success"]) !== 1) {
 	  $createFile = $uploadFolder . $pageTitleFormatted . ".php";
 	  $fh = fopen($createFile, "w") or die($responseData["pageError"] = "<i class='fa fa-times' aria-hidden='true'></i> Page could not be created.");
 
-	  $userContent =  "<!DOCTYPE html> \n" .
-	                  "<html lang='en'> \n" .
-	                  "<head> \n" .
-	                  "<meta charset='utf-8'> \n" .
-	                  "<meta http-equiv='X-UA-Compatible' content='IE=edge'> \n" .
-	                  "<meta name='viewport' content='width=device-width, initial-scale=1'> \n" .
-	                  "<link rel='apple-touch-icon' sizes='57x57' href='assets/ico/apple-icon-57x57.png'> \n" .
-	                  "<link rel='apple-touch-icon' sizes='60x60' href='assets/ico/apple-icon-60x60.png'> \n" .
-	                  "<link rel='apple-touch-icon' sizes='72x72' href='assets/ico/apple-icon-72x72.png'> \n" .
-	                  "<link rel='apple-touch-icon' sizes='76x76' href='assets/ico/apple-icon-76x76.png'> \n" .
-	                  "<link rel='apple-touch-icon' sizes='114x114' href='assets/ico/apple-icon-114x114.png'> \n" .
-	                  "<link rel='apple-touch-icon' sizes='120x120' href='assets/ico/apple-icon-120x120.png'> \n" .
-	                  "<link rel='apple-touch-icon' sizes='144x144' href='assets/ico/apple-icon-144x144.png'> \n" .
-	                  "<link rel='apple-touch-icon' sizes='152x152' href='assets/ico/apple-icon-152x152.png'> \n" .
-	                  "<link rel='apple-touch-icon' sizes='180x180' href='assets/ico/apple-icon-180x180.png'> \n" .
-	                  "<link rel='icon' type='image/png' sizes='192x192'  href='/android-icon-192x192.png'> \n" .
-	                  "<link rel='icon' type='image/png' sizes='32x32' href='assets/ico/favicon-32x32.png'> \n" .
-	                  "<link rel='icon' type='image/png' sizes='96x96' href='assets/ico/favicon-96x96.png'> \n" .
-	                  "<link rel='icon' type='image/png' sizes='16x16' href='assets/ico/favicon-16x16.png'> \n" .
-	                  "<link rel='manifest' href='/manifest.json'> \n" .
-	                  "<meta name='msapplication-TileColor' content='#ffffff'> \n" .
-	                  "<meta name='msapplication-TileImage' content='/ms-icon-144x144.png'> \n" .
-	                  "<meta name='theme-color' content='#ffffff'> \n" .
-	                  "<title>" . $pageTitle . "</title> \n" .
-	                  "<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u' crossorigin='anonymous'> \n" .
-	                  "<link rel='stylesheet' href='../css/style.css'> \n" .
-	                  "</head> \n" .
-	                  "<body> \n" .
-	                  "<div class='container'> \n" .
-	                  "<header> \n" .
-	                  "<h1>" . $pageTitle . "</h1> \n" .
-	                  "<span>" . $pageTags . "</span> \n" .
-	                  "</header> \n" .
-	                  $pageContent . "\n" .
-	                  "</div> \n" .
-	                  "</body> \n" .
-	                  "</html> \n";
+	  ob_start();
+include 'includes/template.php';
+$include = ob_get_clean();
+$include = str_replace("pageTitle", $pageTitle, $include);
+$include = str_replace("pageTags", $pageTags, $include);
+$include = str_replace("pageContent", $pageContent, $include);
+$include = str_replace("$", "", $include);
+$content = <<<EOF
+{$include}
+EOF;
 
-	  fwrite($fh, $userContent);
+	  fwrite($fh, $include);
 
 	  $emailLink = $_POST["link"];
 
@@ -166,7 +139,7 @@ if(intval($responseKeys["success"]) !== 1) {
 
 	    $sendEmail->SMTPDebug = 3;
 
-	    $sendEmail->setFrom("bronson@bronsondunbar.com", "Content link");
+	    $sendEmail->setFrom($yourEmail, "Content link");
 	    $sendEmail->addAddress($userEmail, "Content link");
 	    $sendEmail->Subject = "Content link";
 	    $sendEmail->Body = $userPage;
@@ -199,45 +172,18 @@ if(intval($responseKeys["success"]) !== 1) {
 	  $createFile = $uploadFolder . $pageTitleFormatted . ".php";
 	  $fh = fopen($createFile, "w") or die($responseData["pageError"] = "<i class='fa fa-times' aria-hidden='true'></i> Page could not be created.");
 
-	  $userContent =  "<!DOCTYPE html> \n" .
-	                  "<html lang='en'> \n" .
-	                  "<head> \n" .
-	                  "<meta charset='utf-8'> \n" .
-	                  "<meta http-equiv='X-UA-Compatible' content='IE=edge'> \n" .
-	                  "<meta name='viewport' content='width=device-width, initial-scale=1'> \n" .
-	                  "<link rel='apple-touch-icon' sizes='57x57' href='assets/ico/apple-icon-57x57.png'> \n" .
-	                  "<link rel='apple-touch-icon' sizes='60x60' href='assets/ico/apple-icon-60x60.png'> \n" .
-	                  "<link rel='apple-touch-icon' sizes='72x72' href='assets/ico/apple-icon-72x72.png'> \n" .
-	                  "<link rel='apple-touch-icon' sizes='76x76' href='assets/ico/apple-icon-76x76.png'> \n" .
-	                  "<link rel='apple-touch-icon' sizes='114x114' href='assets/ico/apple-icon-114x114.png'> \n" .
-	                  "<link rel='apple-touch-icon' sizes='120x120' href='assets/ico/apple-icon-120x120.png'> \n" .
-	                  "<link rel='apple-touch-icon' sizes='144x144' href='assets/ico/apple-icon-144x144.png'> \n" .
-	                  "<link rel='apple-touch-icon' sizes='152x152' href='assets/ico/apple-icon-152x152.png'> \n" .
-	                  "<link rel='apple-touch-icon' sizes='180x180' href='assets/ico/apple-icon-180x180.png'> \n" .
-	                  "<link rel='icon' type='image/png' sizes='192x192'  href='/android-icon-192x192.png'> \n" .
-	                  "<link rel='icon' type='image/png' sizes='32x32' href='assets/ico/favicon-32x32.png'> \n" .
-	                  "<link rel='icon' type='image/png' sizes='96x96' href='assets/ico/favicon-96x96.png'> \n" .
-	                  "<link rel='icon' type='image/png' sizes='16x16' href='assets/ico/favicon-16x16.png'> \n" .
-	                  "<link rel='manifest' href='/manifest.json'> \n" .
-	                  "<meta name='msapplication-TileColor' content='#ffffff'> \n" .
-	                  "<meta name='msapplication-TileImage' content='/ms-icon-144x144.png'> \n" .
-	                  "<meta name='theme-color' content='#ffffff'> \n" .
-	                  "<title>" . $pageTitle . "</title> \n" .
-	                  "<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u' crossorigin='anonymous'> \n" .
-	                  "<link rel='stylesheet' href='../css/style.css'> \n" .
-	                  "</head> \n" .
-	                  "<body> \n" .
-	                  "<div class='container'> \n" .
-	                  "<header> \n" .
-	                  "<h1>" . $pageTitle . "</h1> \n" .
-	                  "<span>" . $pageTags . "</span> \n" .
-	                  "</header> \n" .
-	                  $pageContent . "\n" .
-	                  "</div> \n" .
-	                  "</body> \n" .
-	                  "</html> \n";
+	  ob_start();
+include 'includes/template.php';
+$include = ob_get_clean();
+$include = str_replace("pageTitle", $pageTitle, $include);
+$include = str_replace("pageTags", $pageTags, $include);
+$include = str_replace("pageContent", $pageContent, $include);
+$include = str_replace("$", "", $include);
+$content = <<<EOF
+{$include}
+EOF;
 
-	  fwrite($fh, $userContent);
+	  fwrite($fh, $include);
 
 	  $emailLink = $_POST["link"];
 
