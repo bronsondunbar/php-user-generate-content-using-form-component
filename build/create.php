@@ -119,12 +119,11 @@ if(intval($responseKeys["success"]) !== 1) {
 	  $fh = fopen($createFile, "w") or die($responseData["pageError"] = "<i class='fa fa-times' aria-hidden='true'></i> Page could not be created.");
 
 	  ob_start();
+$pageTitle = trim($_POST["title"]);
+$pageTags = trim($_POST["tags"]);
+$pageContent = trim($_POST["content"]);
 include 'includes/template.php';
 $include = ob_get_clean();
-$include = str_replace("pageTitle", $pageTitle, $include);
-$include = str_replace("pageTags", $pageTags, $include);
-$include = str_replace("pageContent", $pageContent, $include);
-$include = str_replace("$", "", $include);
 $content = <<<EOF
 {$include}
 EOF;
@@ -173,12 +172,11 @@ EOF;
 	  $fh = fopen($createFile, "w") or die($responseData["pageError"] = "<i class='fa fa-times' aria-hidden='true'></i> Page could not be created.");
 
 	  ob_start();
+$pageTitle = trim($_POST["title"]);
+$pageTags = trim($_POST["tags"]);
+$pageContent = trim($_POST["content"]);
 include 'includes/template.php';
 $include = ob_get_clean();
-$include = str_replace("pageTitle", $pageTitle, $include);
-$include = str_replace("pageTags", $pageTags, $include);
-$include = str_replace("pageContent", $pageContent, $include);
-$include = str_replace("$", "", $include);
 $content = <<<EOF
 {$include}
 EOF;

@@ -21,17 +21,17 @@
 <meta name='msapplication-TileColor' content='#ffffff'>
 <meta name='msapplication-TileImage' content='/ms-icon-144x144.png'>
 <meta name='theme-color' content='#ffffff'>
-<title>pageTitle</title>
+<title><?php echo $pageTitle ?></title>
 <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u' crossorigin='anonymous'>
 <link rel='stylesheet' href='../css/style.css'>
 </head>
 <body>
 <div class='container'>
 <header>
-<h1>pageTitle</h1>
-<span>pageTags</span>
+<h1><?php echo $pageTitle ?></h1>
+<span><?php echo $pageTags ?></span>
 </header>
-pageContent
+<?php echo $pageContent ?>
 </div>
 </body>
 </html>
