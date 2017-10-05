@@ -10,7 +10,7 @@ Preview: http://bit.ly/2vCsdAR
 
 ## Steps
 
-In order for the example below to work you will need to use your own Google reCAPTCHA site &amp; private keys as well as your MailChimp API key and list ID
+In order for the example below to work you will need to use your own Google reCAPTCHA site &amp; private keys
 
 1. Go to <a href="https://www.google.com/recaptcha/intro/">https://www.google.com/recaptcha/intro/</a>
 2. Click on the Get reCAPTCHA button
