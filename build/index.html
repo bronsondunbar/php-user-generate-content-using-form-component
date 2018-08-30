@@ -8,7 +8,7 @@
     <meta name="description" content="User generated content using form component">
     <meta name="author" content="Bronson Dunbar">
 
-    <title>User generated content using form component</title>
+    <title>User Generated Content Using Form</title>
 
     <link href="css/style.css?v=1633" rel="stylesheet">
 
@@ -31,10 +31,10 @@
     <div class="container">
 
       <header>
-        <h1>User generated content using form</h1>
+        <h1>User Generated Content Using Form</h1>
 
-        <div class="panel panel-default">
-          <div class="panel-body">
+        <div class="card">
+          <div class="card-body">
           <p>This example creates a folder and page from where it is being hosted using the details from the form.</p>
 
             <p>It also includes Google reCAPTCHA to ensure there is no spam content created.</p>
@@ -44,49 +44,58 @@
         </div>
       </header>
 
-      <h2>Steps</h2>
+      <div class="card">
+        <div class="card-body">
+          <h2>Steps</h2>
 
-      <p>In order for the example below to work you will need to use your own Google reCAPTCHA site &amp; private keys</p>
+          <p>In order for the example below to work you will need to use your own Google reCAPTCHA site &amp; private keys</p>
 
-      <ol>
-        <li>Go to <a href="https://www.google.com/recaptcha/intro/">https://www.google.com/recaptcha/intro/</a></li>
-        <li>Click on the Get reCAPTCHA button</li>
-        <li>After logging in, you will need to register your site in order to get your keys.</li>
-        <li>Once you have done this, you can select your site and then click on the Keys section</li>
-        <li>This will give you both your site &amp; private keys</li>
-        <li>In index.html, you can search for SITE_KEY and replace it with your key</li>
-        <li>In create.php, you can search for PRIVATE_KEY and replace it with your key</li>
-        <li>Once this has been done, you can upload the files your site and test. Keep in mind you need to upload the files to the same site you added in Google reCAPTCHA</li>
-      </ol>
+          <ol>
+            <li>Go to <a href="https://www.google.com/recaptcha/intro/">https://www.google.com/recaptcha/intro/</a></li>
+            <li>Click on the Get reCAPTCHA button</li>
+            <li>After logging in, you will need to register your site in order to get your keys.</li>
+            <li>Once you have done this, you can select your site and then click on the Keys section</li>
+            <li>This will give you both your site &amp; private keys</li>
+            <li>In index.html, you can search for SITE_KEY and replace it with your key</li>
+            <li>In create.php, you can search for PRIVATE_KEY and replace it with your key</li>
+            <li>Once this has been done, you can upload the files your site and test. Keep in mind you need to upload the files to the same site you added in Google reCAPTCHA</li>
+          </ol>
+        </div>
+      </div>
 
-      <h2>Example</h2>
+      <div class="card">
+        <div class="card-body">
+          <h2>Example</h2>
 
-      <form name="form" id="form" method="POST" action="#">
-        <label for="name">What is your name?</label>
-        <input id="name" name="name" placeholder="John Doe" type="text">
+          <form name="form" id="form" method="POST" action="#">
+            <label for="name">What is your name?</label>
+            <input id="name" name="name" placeholder="John Doe" type="text">
 
-        <label for="email">What is your email address?</label>
-        <input id="email" name="email" placeholder="john@doe.com" type="email">
+            <label for="email">What is your email address?</label>
+            <input id="email" name="email" placeholder="john@doe.com" type="email">
 
-        <label for="title">What is the title of your page?</label>
-        <input id="title" name="title" placeholder="Title" type="text">
+            <label for="title">What is the title of your page?</label>
+            <input id="title" name="title" placeholder="Title" type="text">
 
-        <label for="tags">What is the tags for your page?</label>
-        <input id="tags" name="tags" placeholder="tags, tags, tags" type="text">
+            <label for="tags">What is the tags for your page?</label>
+            <input id="tags" name="tags" placeholder="tags, tags, tags" type="text">
 
-        <label for="content">What is the content of your page?</label>
-        <textarea id="content" name="content"></textarea>
+            <label for="content">What is the content of your page?</label>
+            <textarea id="content" name="content"></textarea>
 
-        <ul class="form-list">
-          <li><input id="link" name="link" type="checkbox" value="Yes" ></li>
-          <li><label for="link">Email me the link</label></li>
-        </ul>
+            <ul class="form-list">
+              <li><input id="link" name="link" type="checkbox" value="Yes" ></li>
+              <li><label for="link">Email me the link</label></li>
+            </ul>
 
-        <div class="g-recaptcha" data-sitekey="SITE_KEY"></div>
-        <script src='https://www.google.com/recaptcha/api.js'></script>
+            <div class="g-recaptcha" data-sitekey="SITE_KEY"></div>
+            <script src='https://www.google.com/recaptcha/api.js'></script>
 
-        <input id="submitForm" name="submit" type="submit" class="btn btn-lg btn-default" value="Create page">
-      </form>
+            <button id="submitForm" name="submit" type="submit" class="btn btn-default">Create page</button>
+          </form>
+        </div>
+      </div>
+
     </div>
 
     <script src="js/app.js?v=1328"></script>
